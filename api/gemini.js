@@ -1,5 +1,5 @@
 // /api/gemini.js — Vercel serverless function
-// Proxies requests to Google Gemini 2.5 Flash API server-side (key never exposed to browser)
+// Proxies requests to Google Gemini 3 Flash API server-side (key never exposed to browser)
 // Daily rate limit: 1000 tokens per IP per day (Gemini free tier: 32k tokens/day)
 // Per-minute limit: 15 requests per minute per IP (Gemini free tier limit)
 
@@ -161,7 +161,7 @@ export default async function handler(req, res) {
       ],
     };
 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`, {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_KEY}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
